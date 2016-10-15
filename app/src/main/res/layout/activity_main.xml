@@ -10,8 +10,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="sbin.com.fragementactivity_learning.MainActivity">
 
-    <TextView
+    <fragment
+        android:id="@+id/simple_fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_centerInParent="true"
+        class="sbin.com.fragementactivity_learning.SimpleFragment"
+        tools:layout="@layout/fragment_simple"
+        />
+
 </RelativeLayout>
