@@ -10,32 +10,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="sbin.com.fragementactivity_learning.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
+    <TextView
+        android:id="@+id/text_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        />
+        android:text="Hello World"
+        android:textSize="24sp" />
 
     <Button
-        android:text="Add Fragment"
+        android:text="Measure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button"
-        android:onClick="addClickHandler"
+        android:onClick="onMeasureBtnClick"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="Remove"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:onClick="removeClickHandler"
-        android:layout_alignTop="@+id/button"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

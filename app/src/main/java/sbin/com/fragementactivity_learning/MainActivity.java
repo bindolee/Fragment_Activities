@@ -1,47 +1,37 @@
 package sbin.com.fragementactivity_learning;
 
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String FRAGMENT_TAG ="fragment_tag";
+    private TextView mOut;
+    private boolean mUseFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mOut = (TextView) findViewById(R.id.text_out);
     }
 
-    public void addClickHandler(View view) {
-
-        Bundle arguments  = new Bundle();
-        arguments.putString(SimpleFragment.MESSAGE_KEY, "Passed as an argument");
-
-        SimpleFragment fragment = new SimpleFragment();
-        fragment.setArguments(arguments);
-        getSupportFragmentManager()
-                .beginTransaction()
-                .addToBackStack(null)
-                .add(R.id.fragment_container,fragment,FRAGMENT_TAG)
-                .commit();
-    }
-
-    public void removeClickHandler(View view) {
-        //This is way to retrieve the saved fragment reference..
-        // when orientation is tiltied.. this fragment reference isn't saved
-        // just not by declare it outside of the oncreatefucntion.. this is not enough.
-        Fragment fragment =
-                getSupportFragmentManager()
-                .findFragmentByTag(FRAGMENT_TAG);
-
-        if (fragment != null){
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .remove(fragment)
-                    .commit();
+    public void onMeasureBtnClick(View view){
+        ScreenUtility su = new ScreenUtility(this);
+        mOut.setText(String.format("Width: %s, Height: %s",
+                su.getDpWidth(), su.getDpHeight()));
+        //this is for tablet.
+        if (su.getDpWidth() >= 820) {
+            mUseFragment = true;
         }
+        else {
+            mUseFragment = false;
+        }
+        Toast.makeText(MainActivity.this,
+                "Using Fragment" + mUseFragment,Toast.LENGTH_SHORT).show();
     }
+
 }
