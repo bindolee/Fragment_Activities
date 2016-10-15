@@ -7,7 +7,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    public static final String FRAGMENT_TAG ="fragment_tag";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
         SimpleFragment fragment = new SimpleFragment();
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.fragment_container,fragment)
+                .addToBackStack(null)
+                .add(R.id.fragment_container,fragment,FRAGMENT_TAG)
                 .commit();
     }
 
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         // just not by declare it outside of the oncreatefucntion.. this is not enough.
         Fragment fragment =
                 getSupportFragmentManager()
-                .findFragmentById(R.id.fragment_container);
+                .findFragmentByTag(FRAGMENT_TAG);
 
         if (fragment != null){
             getSupportFragmentManager()
