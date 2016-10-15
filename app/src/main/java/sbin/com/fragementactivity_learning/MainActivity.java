@@ -2,15 +2,20 @@ package sbin.com.fragementactivity_learning;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
+
+    SimpleFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
-        SimpleFragment fragment = new SimpleFragment();
+    public void clickHandler(View view) {
+        fragment = new SimpleFragment();
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.fragment_container,fragment)
