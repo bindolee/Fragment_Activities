@@ -6,19 +6,29 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    SimpleFragment fragment;
+    private SimpleFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        fragment = new SimpleFragment();
     }
 
-    public void clickHandler(View view) {
-        fragment = new SimpleFragment();
+    public void addClickHandler(View view) {
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.fragment_container,fragment)
                 .commit();
+    }
+
+    public void removeClickHandler(View view) {
+        if (fragment != null){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .remove(fragment)
+                    .commit();
+        }
     }
 }
