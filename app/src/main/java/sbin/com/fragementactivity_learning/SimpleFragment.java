@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
  */
 public class SimpleFragment extends Fragment {
 
+    public static final  String MESSAGE_KEY = "message_key";
     public static final String TAG = "LifecycleEvents";
 
     public SimpleFragment() {
@@ -38,8 +40,16 @@ public class SimpleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.i(TAG,"OnCreateView");
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_simple, container, false);
+        View view = inflater.inflate(R.layout.fragment_simple, container, false);
+
+        //Bundle set / get aruments are key-value type map.
+        Bundle arguments = getArguments();
+        if (arguments != null){
+            String message = arguments.getString(MESSAGE_KEY);
+            TextView tvMessage = (TextView) view.findViewById(R.id.message);
+            tvMessage.setText(message);
+        }
+        return view;
     }
 
     @Override

@@ -16,7 +16,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addClickHandler(View view) {
+
+        Bundle arguments  = new Bundle();
+        arguments.putString(SimpleFragment.MESSAGE_KEY, "Passed as an argument");
+
         SimpleFragment fragment = new SimpleFragment();
+        fragment.setArguments(arguments);
         getSupportFragmentManager()
                 .beginTransaction()
                 .addToBackStack(null)
