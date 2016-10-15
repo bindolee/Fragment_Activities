@@ -36,6 +36,15 @@ public class SimpleFragment extends Fragment {
         Log.i(TAG,"OnCreate");
     }
 
+    public static SimpleFragment newInstance(String message) {
+
+        Bundle args = new Bundle();
+        args.putString(SimpleFragment.MESSAGE_KEY, message);
+        SimpleFragment fragment = new SimpleFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
